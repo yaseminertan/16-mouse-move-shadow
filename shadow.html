@@ -6,8 +6,8 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="context">
-      <h1 contenteditable>🔥 HERE I AM!</h1>
+    <div class="content">
+      <h1>🔥 HERE I AM!</h1>
     </div>
   </body>
   <style>
@@ -16,7 +16,27 @@
       flex: 1;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
+    }
+    .content {
+      width: 300px;
+      height: 200px;
     }
   </style>
-  <script></script>
+  <script>
+    const content = document.querySelector(".content");
+    const text = content.querySelector("h1");
+    content.addEventListener("mousemove", shadow);
+    content.addEventListener("mouseout", noShadow);
+    function shadow(e) {
+      text.style.textShadow = `${e.offsetX / 4}px ${e.offsetY / 4}px 0 red,
+      ${e.offsetX / 4}px ${(e.offsetY / 4) * -1}px 0 blue,
+      ${(e.offsetX / 4) * -1}px ${e.offsetY / 4}px 0 green,
+      ${(e.offsetX / 4) * -1}px ${(e.offsetY / 4) * -1}px 0 purple`;
+      ("// px px 0 color");
+    }
+    function noShadow() {
+      text.style.textShadow = "none";
+    }
+  </script>
 </html>
